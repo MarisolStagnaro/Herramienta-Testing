@@ -1,0 +1,31 @@
+private String soloCondicionales(String path) throws IOException {
+		FileReader fr = new FileReader(path);
+		BufferedReader br = new BufferedReader(fr);
+		String codigoReal = "";
+		String linea;
+		while ((linea = br.readLine()) != null) {
+			int indiceTab = linea.indexOf("\t");
+			int indiceBlanco = linea.indexOf(" ");
+			while (indiceTab == 0 || indiceBlanco == 0) {
+				linea = linea.substring(1);
+				indiceTab = linea.indexOf("\t");
+				indiceBlanco = linea.indexOf(" ");
+
+			}
+			int indiceComentario = linea.indexOf("//");
+
+			if (indiceComentario != -1)
+				linea = linea.substring(0, indiceComentario);
+			int indiceIf = linea.indexOf("if");
+			int indiceWhile = linea.indexOf("while");
+			int indiceElse = linea.indexOf("else");
+			int indiceCase = linea.indexOf("case");
+			int indiceDefault = linea.indexOf("default");
+			if (indiceIf == 0 || indiceWhile == 0 || (indiceElse == 0 && indiceIf != -1) || indiceCase == 0
+					|| indiceDefault == 0)
+				codigoReal = codigoReal + linea.substring(0) + "\n";
+		}
+
+		fr.close();
+		return codigoReal;
+	}

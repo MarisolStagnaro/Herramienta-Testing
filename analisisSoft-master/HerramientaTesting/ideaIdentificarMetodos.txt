@@ -1,0 +1,6 @@
+busco "{" la primera vez inicia la clase   llave=1
+repito hasta que llave==0 {
+    la proxima linea que no sea comentario ni vacio sera el metodo, busco su "{"   llave=2
+   copio las lineas hasta encontrar la llave "}" con la que llave==1
+}
+
